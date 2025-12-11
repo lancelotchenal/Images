@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Image Widget</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* prevents scrollbars */
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block; /* removes whitespace gaps */
+    }
+  </style>
+</head>
+<body>
+  <img id="image" alt="Daily Image">
+
+  <script>
+    const images = [
+      "https://i.pinimg.com/1200x/3d/fd/3e/3dfd3ee9f14129965340b5afd6a63ee3.jpg",
+      "https://i.pinimg.com/736x/c6/11/00/c61100a2a2b60fb2e91986705dbf83e6.jpg",
+      "https://i.pinimg.com/1200x/ac/75/08/ac75086c9cbcb8ce575f8fae24fda92c.jpg",
+      "https://i.pinimg.com/736x/c0/f1/1f/c0f11f7bed457b428ee22ccd1270ea58.jpg",
+      "https://i.pinimg.com/736x/ee/5a/2d/ee5a2d65c784eaa4824c50783900c7b6.jpg"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * images.length);
+    document.getElementById("image").src = images[randomIndex];
+  </script>
+</body>
+</html>
