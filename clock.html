@@ -54,8 +54,8 @@
         background: var(--fg);
         left: 50%;
         top: 50%;
-        transform-origin: center -100px;
-    }
+        transform-origin: center bottom; /* anchor at bottom */
+}
 
     /* Hands */
     .hand {
@@ -65,7 +65,7 @@
         background: var(--fg);
         left: 50%;
         top: 50%;
-        transform-origin: bottom;
+        transform-origin: center bottom; /* pivot at center bottom */
         border-radius: 2px;
     }
 
@@ -73,13 +73,7 @@
         background: var(--accent);
         width: 2px;
         height: 60%;
-        animation: sweep 60s linear infinite;
-    }
-
-    @keyframes sweep {
-        from { transform: translateX(-50%) rotate(0deg); }
-        to { transform: translateX(-50%) rotate(360deg); }
-    }
+            }
 
     .digital {
         margin-top: 15px;
@@ -132,8 +126,8 @@
         const minutes = now.getMinutes() + seconds / 60;
         const hours = now.getHours() % 12 + minutes / 60;
 
-        hourHand.style.transform = `translateX(-50%) rotate(${hours * 30}deg)`;
-        minuteHand.style.transform = `translateX(-50%) rotate(${minutes * 6}deg)`;
+        hourHand.style.transform = `translate(-50%, -100%) rotate(${hours * 30}deg)`;
+        minuteHand.style.transform = `translate(-50%, -100%) rotate(${minutes * 6}deg)`;
 
         // Digital Time
         digital.textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
