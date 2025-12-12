@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Clock Widget</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Analog + Digital Clock Widget</title>
 
 <style>
     :root {
-        --text-color: #222;
-        --bg-color: #ffffff;
+        --bg: #ffffff;
+        --clock-bg: #f8f8f8;
+        --mark: #333;
+        --hand-hour: #333;
+        --hand-minute: #333;
+        --hand-second: #dd3333;
+        --text: #222;
     }
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --text-color: #f5f5f5;
-            --bg-color: #000000;
+            --bg: #000000;
+            --clock-bg: #0d0d0d;
+            --mark: #dddddd;
+            --hand-hour: #ffffff;
+            --hand-minute: #ffffff;
+            --hand-second: #ff5555;
+            --text: #f2f2f2;
         }
     }
 
     html, body {
         margin: 0;
         padding: 0;
+        background: var(--bg);
         height: 100%;
         width: 100%;
-        background: var(--bg-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -31,30 +42,143 @@
         font-family: "Inter", sans-serif;
     }
 
+    #container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
     #clock {
-        font-size: 3.5em;
+        width: 240px;
+        height: 240px;
+        background: var(--clock-bg);
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* Tick marks */
+    .mark {
+        position: absolute;
+        width: 2px;
+        height: 12px;
+        background: var(--mark);
+        top: 0;
+        left: 50%;
+        transform-origin: center 120px;
+    }
+
+    /* Hands */
+    .hand {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translateX(-50%);
+    }
+
+    #hour-hand {
+        width: 5px;
+        height: 55px;
+        background: var(--hand-hour);
+        border-radius: 2px;
+    }
+
+    #minute-hand {
+        width: 3px;
+        height: 80px;
+        background: var(--hand-minute);
+        border-radius: 2px;
+    }
+
+    #second-hand {
+        width: 2px;
+        height: 95px;
+        background: var(--hand-second);
+        border-radius: 2px;
+    }
+
+    /* Digital time */
+    #digital {
+        font-size: 1.5em;
         font-weight: 600;
-        color: var(--text-color);
-        letter-spacing: 0.05em;
-        user-select: none;
+        color: var(--text);
+    }
+
+    /* Date */
+    #date {
+        font-size: 1em;
+        font-weight: 400;
+        color: var(--text);
+        opacity: 0.9;
     }
 </style>
-
 </head>
 <body>
 
-<div id="clock"></div>
+<div id="container">
+    <div id="clock"></div>
+
+    <div id="digital">--:--</div>
+    <div id="date">----</div>
+</div>
 
 <script>
+    const clock = document.getElementById("clock");
+
+    // Add 60 tick marks (1 per minute)
+    for (let i = 0; i < 60; i++) {
+        const mark = document.createElement("div");
+        mark.classList.add("mark");
+        mark.style.transform = `translateX(-50%) rotate(${i * 6}deg)`;
+        mark.style.height = i % 5 === 0 ? "18px" : "10px";  // longer marks for hours
+        clock.appendChild(mark);
+    }
+
+    // Create hands
+    const hourHand = document.createElement("div");
+    hourHand.id = "hour-hand";
+    hourHand.classList.add("hand");
+
+    const minuteHand = document.createElement("div");
+    minuteHand.id = "minute-hand";
+    minuteHand.classList.add("hand");
+
+    const secondHand = document.createElement("div");
+    secondHand.id = "second-hand";
+    secondHand.classList.add("hand");
+
+    clock.appendChild(hourHand);
+    clock.appendChild(minuteHand);
+    clock.appendChild(secondHand);
+
     function updateClock() {
         const now = new Date();
 
-        const hours = String(now.getHours()).padStart(2, "0");
-        const minutes = String(now.getMinutes()).padStart(2, "0");
-        const seconds = String(now.getSeconds()).padStart(2, "0");
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
 
-        document.getElementById("clock").textContent =
-            `${hours}:${minutes}:${seconds}`;
+        // Analog
+        hourHand.style.transform =
+            `translateX(-50%) rotate(${(hours % 12) * 30 + minutes * 0.5}deg)`;
+        minuteHand.style.transform =
+            `translateX(-50%) rotate(${minutes * 6}deg)`;
+        secondHand.style.transform =
+            `translateX(-50%) rotate(${seconds * 6}deg)`;
+
+        // Digital
+        document.getElementById("digital").textContent =
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+        // Date formatting (e.g., "Wednesday, March 5, 2025")
+        const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+        document.getElementById("date").textContent = now.toLocaleDateString(undefined, options);
     }
 
     updateClock();
