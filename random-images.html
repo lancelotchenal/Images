@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Image Widget</title>
+
+<style>
+    html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<img id="image" src="" alt="Random image">
+
+<script>
+    const images = [
+        "https://i.pinimg.com/1200x/36/18/07/3618074c954ae38e9f754319ecf52f4e.jpg",
+        "https://i.pinimg.com/736x/74/b2/57/74b257b52f67246dffb6bc1bae091f11.jpg",
+        "https://i.pinimg.com/736x/e0/ae/e1/e0aee15ca59d66424f058ba2232a2712.jpg"
+        "https://i.pinimg.com/736x/33/5f/4d/335f4d52f24c67554adac9ff161b0368.jpg"
+    ];
+
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    document.getElementById("image").src = randomImage;
+</script>
+
+</body>
+</html>
