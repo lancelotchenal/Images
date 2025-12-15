@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Random Image Widget</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sequential Image Widget</title>
 
 <style>
     html, body {
@@ -25,18 +25,32 @@
 </head>
 <body>
 
-<img id="image" src="" alt="Random image">
+<img id="image" alt="Sequential image" />
 
 <script>
     const images = [
         "https://i.pinimg.com/1200x/36/18/07/3618074c954ae38e9f754319ecf52f4e.jpg",
         "https://i.pinimg.com/736x/74/b2/57/74b257b52f67246dffb6bc1bae091f11.jpg",
         "https://i.pinimg.com/736x/e0/ae/e1/e0aee15ca59d66424f058ba2232a2712.jpg",
-        "https://i.pinimg.com/736x/33/5f/4d/335f4d52f24c67554adac9ff161b0368.jpg"
+        "https://i.pinimg.com/1200x/4f/88/be/4f88be7975c49bae604e0170959b74de.jpg",
+        "https://i.pinimg.com/736x/b9/95/b3/b995b38a8101da1e79d28db3fc1fb7d8.jpg",
+        "https://i.pinimg.com/1200x/27/c7/30/27c7301afe3dd0f730fbe58cb77126f8.jpg",
+        "https://i.pinimg.com/1200x/70/1f/bb/701fbb9a78be7556578255ebef4b57fb.jpg",
+        "https://i.pinimg.com/736x/04/ce/ca/04ceca07847be403e25b425f6b06b0f9.jpg"
     ];
 
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    document.getElementById("image").src = randomImage;
+    const STORAGE_KEY = "notion-image-index";
+
+    let index = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+
+    if (isNaN(index)) {
+        index = 0;
+    } else {
+        index = (index + 1) % images.length;
+    }
+
+    localStorage.setItem(STORAGE_KEY, index);
+    document.getElementById("image").src = images[index];
 </script>
 
 </body>
