@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="cleanAnalytical" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF6EE"/>
+      <stop offset="45%" stop-color="#E4DED5"/>
+      <stop offset="100%" stop-color="#5A7D9F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#cleanAnalytical)" />
+</svg>
