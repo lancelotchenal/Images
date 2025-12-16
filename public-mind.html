@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sequential Image Widget</title>
+
+<style>
+    html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<img id="image" alt="Sequential image" />
+
+<script>
+    const images = [
+        "https://i.pinimg.com/736x/02/98/d7/0298d7fbfdde1c22706b59bb7945d400.jpg",
+        "https://i.pinimg.com/1200x/1d/49/4a/1d494ac7306e0a7ae1f3071b60cf57ad.jpg",
+        "https://i.pinimg.com/736x/7c/55/17/7c55178d299710c9c97408d2bf228adc.jpg",
+        "https://i.pinimg.com/736x/68/9a/c5/689ac5801a48e8f29296c801f3fbfb32.jpg",
+        "https://i.pinimg.com/736x/a3/24/3b/a3243b1d8df1eeb619da5968a7b45dad.jpg",
+        "https://i.pinimg.com/736x/10/f8/3f/10f83fce44b619204312ad0055fc207a.jpg",
+        "https://i.pinimg.com/736x/a8/b9/10/a8b910d7b341eea4f787f6cfe63e8b99.jpg",
+        "https://i.pinimg.com/736x/fe/fa/45/fefa45255fe0a6493d7eb4b16b0c2e7d.jpg",
+        "https://i.pinimg.com/1200x/f4/7b/8f/f47b8f241d537b8740a5cec207f5e8b7.jpg",
+        "https://i.pinimg.com/736x/c3/b8/97/c3b897b8c6ff185718fb5a522c94d1cb.jpg",
+        "https://i.pinimg.com/736x/34/fc/07/34fc072b7e6131552cbe2a81e9618ea2.jpg"
+    ];
+
+    const STORAGE_KEY = "notion-image-index";
+
+    let index = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+
+    if (isNaN(index)) {
+        index = 0;
+    } else {
+        index = (index + 1) % images.length;
+    }
+
+    localStorage.setItem(STORAGE_KEY, index);
+    document.getElementById("image").src = images[index];
+</script>
+
+</body>
+</html>
