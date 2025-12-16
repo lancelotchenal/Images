@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sequential Image Widget</title>
 
+<style>
+    html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<img id="image" alt="Sequential image" />
+
+<script>
+    const images = [
+        "https://i.pinimg.com/1200x/b3/d8/5b/b3d85be41507e60381ebc45f22fe2118.jpg",
+        "https://i.pinimg.com/736x/f0/ee/58/f0ee589ea1e31883646b8a27169cf2f4.jpg",
+        "https://i.pinimg.com/1200x/81/86/d4/8186d4f290c6ab67fcefc1e09586fd7b.jpg",
+        "https://i.pinimg.com/736x/0a/2a/9d/0a2a9d258fc409c5d50e1525f8a5a400.jpg",
+        "https://i.pinimg.com/736x/5d/4e/e5/5d4ee58c6a62c354bd0b82ea0ea7989c.jpg",
+        "https://i.pinimg.com/736x/67/eb/b1/67ebb1f8d93a04ff25f2af3674f16c21.jpg",
+        "https://i.pinimg.com/736x/3a/2a/07/3a2a0789027e348d5d01252147a24bd5.jpg",
+        "https://i.pinimg.com/736x/49/c7/79/49c779cc473c8bf50592fcd3068c6ce1.jpg",
+        "https://i.pinimg.com/736x/e8/76/83/e87683220ccb3a53d157e825fd5d6413.jpg",
+        "https://i.pinimg.com/1200x/77/5b/58/775b58337eab381184dab77e676ea5f8.jpg"
+      
+    ];
+
+    const STORAGE_KEY = "notion-image-index";
+
+    let index = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+
+    if (isNaN(index)) {
+        index = 0;
+    } else {
+        index = (index + 1) % images.length;
+    }
+
+    localStorage.setItem(STORAGE_KEY, index);
+    document.getElementById("image").src = images[index];
+</script>
+
+</body>
+</html>
