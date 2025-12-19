@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="persianJadeGradient"
+                    x1="0%" y1="0%"
+                    x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2B4FA1"/>
+      <stop offset="25%" stop-color="#2F7F6F"/>
+      <stop offset="50%" stop-color="#AFA79C"/>
+      <stop offset="75%" stop-color="#EEE8DD"/>
+      <stop offset="100%" stop-color="#1F2426"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900"
+        fill="url(#persianJadeGradient)" />
+</svg>
+
