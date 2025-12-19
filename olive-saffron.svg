@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="oliveSaffronGradient"
+                    x1="0%" y1="0%"
+                    x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C65A4A"/>
+      <stop offset="10%" stop-color="#A35497"/>
+      <stop offset="20%" stop-color="#6A4FA3"/>
+      <stop offset="40%" stop-color="#3B3232"/>
+      <stop offset="60%" stop-color="#7A7A7A"/>
+      <stop offset="80%" stop-color="#C2C6CC"/>
+      <stop offset="100%" stop-color="#F5F3EE"/>
+
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900"
+        fill="url(#oliveSaffronGradient)" />
+</svg>
