@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="lightGold"
+                    x1="0%" y1="0%"
+                    x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2EEE7"/>
+      <stop offset="35%" stop-color="#CBB995"/>
+      <stop offset="70%" stop-color="#A89E8C"/>
+      <stop offset="100%" stop-color="#4E4335"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900"
+        fill="url(#lightGold)" />
+</svg>
