@@ -3,15 +3,17 @@
      preserveAspectRatio="xMidYMid slice">
 
   <defs>
-    <linearGradient id="classicBordeaux"
+    <linearGradient id="fadedSienna"
                     x1="0%" y1="0%"
                     x2="100%" y2="100%">
       <stop offset="0%" stop-color="#B97A80"/>
-      <stop offset="35%" stop-color="#8B3441"/>
-      <stop offset="100%" stop-color="#6E1F2A"/>
+      <stop offset="25%" stop-color="#6E1F2A"/>
+      <stop offset="50%" stop-color="#F3EFE8"/>
+      <stop offset="75%" stop-color="#B9B4AC"/>
+      <stop offset="100%" stop-color="#262626"/>
     </linearGradient>
   </defs>
 
   <rect width="1600" height="900"
-        fill="url(#classicBordeaux)" />
+        fill="url(#fadedSienna)" />
 </svg>
