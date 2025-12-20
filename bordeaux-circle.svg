@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="fadedSienna"
+                    x1="0%" y1="0%"
+                    x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B97A80"/>
+      <stop offset="25%" stop-color="#6E1F2A"/>
+      <stop offset="50%" stop-color="#F3EFE8"/>
+      <stop offset="75%" stop-color="#B9B4AC"/>
+      <stop offset="100%" stop-color="#262626"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="800" cy="450" r="400"
+        fill="url(#fadedSienna)" />
+</svg>
