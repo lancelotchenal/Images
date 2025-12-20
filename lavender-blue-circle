@@ -3,16 +3,17 @@
      preserveAspectRatio="xMidYMid slice">
 
   <defs>
-    <linearGradient id="twilightViolet"
+    <linearGradient id="persianJadeGradient"
                     x1="0%" y1="0%"
                     x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D8D1F0"/>
-      <stop offset="35%" stop-color="#E1B7C6"/>
-      <stop offset="65%" stop-color="#3A4C8A"/>
-      <stop offset="100%" stop-color="#18223C"/>
+      <stop offset="0%" stop-color="#2B4FA1"/>
+      <stop offset="25%" stop-color="#2F7F6F"/>
+      <stop offset="50%" stop-color="#AFA79C"/>
+      <stop offset="75%" stop-color="#EEE8DD"/>
+      <stop offset="100%" stop-color="#1F2426"/>
     </linearGradient>
   </defs>
 
   <circle cx="800" cy="450" r="400"
-        fill="url(#twilightViolet)" />
+        fill="url(#persianJadeGradient)" />
 </svg>
