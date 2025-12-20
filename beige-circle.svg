@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="beige"
+                    x1="0%" y1="0%"
+                    x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6D3CF"/>
+      <stop offset="35%" stop-color="#CBB6B2"/>
+      <stop offset="70%" stop-color="#B08982"/>
+      <stop offset="100%" stop-color="#3A3533"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="800" cy="450" r="400"
+        fill="url(#beige)" />
+</svg>
