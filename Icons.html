@@ -64,11 +64,28 @@
       "https://i.pinimg.com/736x/ee/5a/2d/ee5a2d65c784eaa4824c50783900c7b6.jpg"
     ];
 
-    // Daily deterministic rotation:
-    const today = Math.floor(Date.now() / 86400000);
-    const index = today % images.length;
+      const STORAGE_KEY = "notion-image-index";
+  const INTERVAL_MS = 300000; // change every 10 seconds
 
-    document.getElementById("main-image").src = images[index];
+  const img = document.getElementById("image");
+
+  let index = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+
+  if (isNaN(index)) {
+    index = 0;
+  } else {
+    index = (index + 1) % images.length;
+  }
+
+  img.src = images[index];
+  localStorage.setItem(STORAGE_KEY, index);
+
+  // Timed rotation while page is open
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    img.src = images[index];
+    localStorage.setItem(STORAGE_KEY, index);
+  }, INTERVAL_MS);
 </script>
 
 </body>
